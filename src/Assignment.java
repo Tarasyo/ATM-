@@ -73,24 +73,21 @@ public class Assignment {
 	                      GETING ID
 	TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
 		String input = "";
-		try {
+		
 			
 			boolean valid = false;
 			
-			do {
+		
 		      System.out.println("Please enter a ID: ");
 			  input = bufferR();
-			
+			do {
 				if(input.matches("[0-9]+")) {
 				  	  valid = true;
 				} else {
-				 	valid = false;
-				}
+				 	valid = false;}
+				}while(valid == false);
 			
-			
-			}while(valid == false);
-			
-		}catch(Exception e) { System.out.println("Error reading input");}
+		
 		
 		
 	/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -98,24 +95,21 @@ public class Assignment {
 	 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/	
 
 		String input1 = "";
-		try {
+	
 			
 			boolean valid1 = false;
 			
-			do { 
+			
 		      System.out.println("Please enter a Password: ");
 			  input1 = bufferR();
-			
+			  do {
 				if(input1.matches("[0-9]+")) {
 				  	  valid1 = true;
 				} else {
-				 	valid1 = false;
-				} 
+				 	valid1 = false;}
+				}while(valid1 == false); 
 			
-			
-			}while(valid1 == false); 
-			
-		}catch(Exception e) { System.out.println("Error reading input");} 
+		
 		
 		
 		/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -155,7 +149,7 @@ public class Assignment {
 		login();}
 		
 		
-	}
+		}
 	
 
    /*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -165,46 +159,36 @@ public class Assignment {
 	
 	public void selectMenu() throws Exception {
 		
-		
-		BufferedReader br3 = new BufferedReader(new InputStreamReader(System.in));
-		String input3 = "";
-		try {
+		String input = "";
 			
-			boolean valid3 = false;
+			boolean valid = false;
 			
-			do {
-			 
 			  printit("Select option");;
-			  input3 = br3.readLine();
-			
-				if(input3.matches("[1-6]+")) {
-				  	  valid3 = true;
+			  input = bufferR();
+			do {
+				if(input.matches("[1-6]+")) {
+				  	  valid = true;
 				} else {
-				 	valid3 = false;
-				 printit("Please chuse menu option");
-				}
-			
-			
-			}while(valid3 == false);
-		}	
-		catch(Exception e) { System.out.println("Error reading input");}
+				 	valid = false;
+				 printit("Please chuse menu option");}
+		}while(valid == false);
 		
-		if(input3.equals("1")) {
+		if(input.equals("1")) {
 			checkAccountBalance();
 		}
-		else if(input3.equals("2")) {
+		else if(input.equals("2")) {
 			withdrawMoney();
 		}
-		else if(input3.equals("3")) {
+		else if(input.equals("3")) {
 			changePassword();
 		}
-		else if(input3.equals("4")) {
+		else if(input.equals("4")) {
 			checkStock(null);
 		}
-		else if(input3.equals("5")) {
+		else if(input.equals("5")) {
 			logOut();
 		}
-		else if(input3.equals("6")) {
+		else if(input.equals("6")) {
 			checkAdmin();
 		}
 		
@@ -564,29 +548,28 @@ public void adminOptins() throws Exception {
 		    valid13 = false;
 		    printit("Account with this ID alredy is in the system");
 		    newAccount();
-	 } else {
-		 valid13 = true;
-		 } while(valid13 == false);
+	 }
 	 
 	 }
 	 //TTTTTTTTTTTTTTT PASSWORD INPUT      TTTTTTTTTTTTTTT
-	 BufferedReader br14 = new BufferedReader(new InputStreamReader(System.in));
+	
+	
 		boolean valid14 = false;
 		boolean valid141 = false;
 		String input14;
 		String input141;
-		
+		 do {
+			 BufferedReader br14 = new BufferedReader(new InputStreamReader(System.in));
 	      printit("Enter your new password");
 		  input14 = br14.readLine();
-		  
+		 
 		  if((input14.matches("[0-9]+")) && (input14.length() == 4)) {
 		  	  valid141 = true;
 		} else {
 		 	valid141 = false;
-		 	System.out.println("Please enter just 4 digits");
-		 	newAccount();
+		 	System.out.println("Please enter just 4 digits");}
 		}while(valid141 == false); 
-		  
+		  do {
 		BufferedReader br141 = new BufferedReader(new InputStreamReader(System.in));
 		  printit("Enter it again");
 		  input141 = br141.readLine();
@@ -596,7 +579,7 @@ public void adminOptins() throws Exception {
 			} else {
 				valid14 = false;
 				System.out.println("Password isnt the same");
-				newAccount();
+			}	
 			}while(valid14 == false);
 			
 		/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
