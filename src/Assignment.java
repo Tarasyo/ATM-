@@ -587,7 +587,7 @@ public void adminOptins() throws Exception {
 		 	valid141 = false;
 		 	System.out.println("Please enter just 4 digits");
 		 	newAccount();
-		} while(valid141 == false); 
+		}while(valid141 == false); 
 		  
 		BufferedReader br141 = new BufferedReader(new InputStreamReader(System.in));
 		  printit("Enter it again");
@@ -599,7 +599,7 @@ public void adminOptins() throws Exception {
 				valid14 = false;
 				System.out.println("Password isnt the same");
 				newAccount();
-			} while(valid14 == false);
+			}while(valid14 == false);
 			
 		/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 		             ENTER ACC BALANCE
@@ -633,6 +633,17 @@ public void adminOptins() throws Exception {
     	System.exit(0);
     
     
+    }
+    public String  BufferR() {
+    	String input = "";
+    		try {
+
+    	    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	    		
+    	        input = br.readLine();
+    		
+    		}catch(Exception e) { System.out.println("Error reading input");}
+    		return input;
     }
 
 	
