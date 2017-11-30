@@ -72,16 +72,14 @@ public class Assignment {
 	/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 	                      GETING ID
 	TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
-		
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	String input = "";	
+		String input = "";
 		try {
 			
 			boolean valid = false;
 			
 			do {
 		      System.out.println("Please enter a ID: ");
-			  input = br.readLine();
+			  input = bufferR();
 			
 				if(input.matches("[0-9]+")) {
 				  	  valid = true;
@@ -98,7 +96,7 @@ public class Assignment {
 	/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 	                       GETING PASSWORD 
 	 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/	
-BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
+
 		String input1 = "";
 		try {
 			
@@ -106,7 +104,7 @@ BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
 			
 			do { 
 		      System.out.println("Please enter a Password: ");
-			  input1 = br1.readLine();
+			  input1 = bufferR();
 			
 				if(input1.matches("[0-9]+")) {
 				  	  valid1 = true;
@@ -128,12 +126,12 @@ BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
 		
 		try {
 		
-			BufferedReader br2 = new BufferedReader(new FileReader("user\\"+ input +".txt"));	
+			BufferedReader br = new BufferedReader(new FileReader("user\\"+ input +".txt"));	
 			
 			
-			user[0] = br2.readLine();
-			user[1] = br2.readLine();
-			user[2] = br2.readLine();
+			user[0] = br.readLine();
+			user[1] = br.readLine();
+			user[2] = br.readLine();
 		
 		
 	
@@ -634,7 +632,11 @@ public void adminOptins() throws Exception {
     
     
     }
-    public String  BufferR() {
+    /*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+                       BUFFERREADER
+     TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
+    
+    public String  bufferR() {
     	String input = "";
     		try {
 
