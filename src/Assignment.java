@@ -87,8 +87,7 @@ public class Assignment {
 				 	valid = false;}
 				}while(valid == false);
 			
-		
-		
+
 		
 	/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 	                       GETING PASSWORD 
@@ -110,25 +109,20 @@ public class Assignment {
 				}while(valid1 == false); 
 			
 		
-		
-		
+
 		/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 		                         READING IN
 		 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
 	
-
-		
 		try {
 		
 			BufferedReader br = new BufferedReader(new FileReader("user\\"+ input +".txt"));	
-			
-			
+				
 			user[0] = br.readLine();
 			user[1] = br.readLine();
 			user[2] = br.readLine();
 		
-		
-	
+
 		if(user[0].equals(input) && user[1].equals(input1)) {
 			
 		//TTTTTTT WORKS
@@ -200,33 +194,34 @@ public class Assignment {
 	public void afterOption() {
 	
 		
-		BufferedReader br4 = new BufferedReader(new InputStreamReader(System.in));
-           try {
+
+
+		boolean valid = false;
 			
-			boolean valid4 = false;
 			
 			do {
+				try {
 		      printit("Press 1 for go back to menu or press 2 for logOut ");
-			  String input4 = br4.readLine();
+			  String input = bufferR();
 			
-				if(input4.matches("1")) {
-				  	  valid4 = true;
+				if(input.matches("1")) {
+				  	  valid = true;
 				  	  menu();
 				  	  selectMenu();
 				} 
-				if(input4.matches("2")) {
-					valid4 = true;
+				if(input.matches("2")) {
+					valid = true;
 					System.exit(0);
 				}
 				else {
-				 	valid4 = false;
+				 	valid = false;
 				 	System.out.println("Please try again");
 				}
 			
+			}catch(Exception e) {System.out.println("Problem Reading");}
+			}while(valid == false);
 			
-			}while(valid4 == false);
 			
-		}catch(Exception e) { System.out.println("Error reading input");}
 		
 	}
 	/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -245,18 +240,17 @@ public class Assignment {
     
     public void withdrawMoney(){
     
-    	BufferedReader br5 = new BufferedReader(new InputStreamReader(System.in));
-        try {
+
 			
-			boolean valid5 = false;
+			boolean valid = false;
 			
 			do {
 		      printit("Enter amount money that you want to withdraw");
-			  String input5 = br5.readLine();
+			  String input = bufferR();
 			    
-				if((Double.valueOf(input5) <= Double.valueOf(user[2]))) {
-					valid5 = true;
-					double newMoney = Double.valueOf(user[2])-Double.valueOf(input5);
+				if((Double.valueOf(input) <= Double.valueOf(user[2]))) {
+					valid = true;
+					double newMoney = Double.valueOf(user[2])-Double.valueOf(input);
 					user[2] = Double.toString(newMoney);
 					printit("Your balance now is: "+user[2]);
 				
@@ -273,50 +267,48 @@ public class Assignment {
 			        catch ( IOException e) {}
 				} 
 				else {
-				 	valid5 = false;
+				 	valid = false;
 				 	System.out.println("You dont have so much");
 				}
 			
 			
-			}while(valid5 == false);
+			}while(valid == false);
 			
-		}catch(Exception e) { System.out.println("Error reading input");
-		withdrawMoney();}
+
+		
         afterOption();
-        
+    } 
     	/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
     	               CHANGING PASSWORD
     	 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
-    }
+   
     public void changePassword() {
-    	//TTTTTTTTTTTTTTTT  READ AND CHECK IF ENTER 2 SAME PASSWORDS 
-        try {
-        	BufferedReader br6 = new BufferedReader(new InputStreamReader(System.in));
-			boolean valid6 = false;
-			boolean valid61 = false;
-			
+    	
+      
+			boolean valid = false;
+			boolean valid2 = false;
+			String input ="";
 			do {
 		      printit("Enter your new password");
-			  String input6 = br6.readLine();
+			   input = bufferR();
 			  
-			  if((input6.matches("[0-9]+")) && (input6.length() == 4)) {
-			  	  valid61 = true;
+			  if((input.matches("[0-9]+")) && (input.length() == 4)) {
+			  	  valid2 = true;
 			} else {
-			 	valid61 = false;
+			 	valid2 = false;
 			 	System.out.println("Please enter just 4 digits");
-			 	changePassword();
-			} 
-		
-		
-		while(valid61 == false); 
-			  
-			BufferedReader br61 = new BufferedReader(new InputStreamReader(System.in));
-			  printit("Enter it again");
-			  String input61 = br61.readLine();
-			  
-				if(input6.equals(input61)) {
-					valid6 = true;
-					user[1] = input6;
+			 	changePassword();}
+			}while(valid2 == false); 
+			
+			//TTTTTTTTTTTTTTTT  READ AND CHECK IF ENTER 2 SAME PASSWORDS 
+
+			  String input2 = "";
+			  do {
+				  printit("Enter it again");
+				  input2 = bufferR();
+				if(input.equals(input2)) {
+					valid = true;
+					user[1] = input;
 					
 					// TTTTTTTTTTTTTTTTT WRITE TO THE FILE TTTTTTTTTTTTTTTTTT
 					
@@ -332,14 +324,10 @@ public class Assignment {
 			        catch ( IOException e) {}
 				} 
 				else {
-				 	valid6 = false;
+				 	valid = false;
 				 	System.out.println("passwords not the same");
-				}
+				}}while(valid == false);
 			
-			
-			}while(valid6 == false);
-			
-		}catch(Exception e) { System.out.println("Error reading input");}
         afterOption();
     	
     }
@@ -375,14 +363,14 @@ public String[] mainArray(){
 	String[] list = new String[3];
 	
 	try {
-		BufferedReader br10 = new BufferedReader(new FileReader("user\\"+user[0]+".txt"));
+		BufferedReader br = new BufferedReader(new FileReader("user\\"+user[0]+".txt"));
 		int content = 0;
-		String line = br10.readLine();
+		String line = br.readLine();
 		while(line != null) {
 		   
 		   list[content] = line;
 		   content++;
-		   line = br10.readLine();
+		   line = br.readLine();
 		}
 	}catch(Exception e){}
 	return list;
@@ -393,18 +381,17 @@ public String[] mainArray(){
  TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
 
 public void checkAdmin() {
-	boolean valid10;
+	boolean valid;
 	try {
 
 	 System.out.println("THIS IS ADMIN OPTION PLEASE ENTER PASSWORD:");
-	 BufferedReader adminPassword = new BufferedReader(new InputStreamReader(System.in));
 		String passwordIsHere = "";
-		passwordIsHere = adminPassword.readLine(); 
+		passwordIsHere = bufferR(); 
 		if (passwordIsHere.equals("admin")) {
-			valid10 = true;
+			valid = true;
 			adminOptins();
 		}else {
-			valid10 = false;
+			valid = false;
 			System.out.println("WRONG PASSWORD");
 			afterOption();
 		}
@@ -424,39 +411,37 @@ public void adminOptins() throws Exception {
 	
 	printit("4.Back to main manu");
 		
-		BufferedReader br11 = new BufferedReader(new InputStreamReader(System.in));
-		String input11 = "";
-		try {
-			
-			boolean valid11 = false;
+		
+		String input = "";
+		
+			boolean valid = false;
 			
 			do {
 			 
 			  printit("Select option");;
-			  input11 = br11.readLine();
+			  input = bufferR();
 			
-				if(input11.matches("[1-4]+")) {
-				  	  valid11 = true;
+				if(input.matches("[1-4]+")) {
+				  	  valid = true;
 				} else {
-				 	valid11 = false;
+				 	valid = false;
 				 printit("Please chuse menu option");
 				}
 			
 			
-			}while(valid11 == false);
-		}	
-		catch(Exception e) { System.out.println("Error reading input");}
+			}while(valid == false);
 		
-		if(input11.equals("1")) {
+		
+		if(input.equals("1")) {
 			summary();
 		}
-		else if(input11.equals("2")) {
+		else if(input.equals("2")) {
 			categorys();
 		}
-		else if(input11.equals("3")) {
+		else if(input.equals("3")) {
 			newAccount();
 		}
-		else if(input11.equals("4")) {
+		else if(input.equals("4")) {
 			menu();
 			selectMenu();
 		}
@@ -533,64 +518,62 @@ public void adminOptins() throws Exception {
  public void newAccount() {
 	 //TTTTTTTTTTTTTTTTTTTTT   ID INPUT       TTTTTTTTTTTTTTTTTTTTTTTT
 	 System.out.println("Please Enter New ID:");
-	 BufferedReader br12 = new BufferedReader(new InputStreamReader(System.in));
-		String input12 = "";
-		String value2;
-		boolean valid13= false;
+		String input1 = "";
+		String value1 = "";
+		boolean valid1= false;
 	 try {	
-	 input12 = br12.readLine();
+	 input1 = bufferR();
 	 File[] listOfFiles2 = userList();
 	 
 	 for (File file2 : listOfFiles2) {
-		 value2 = file2.getName().split(".txt")[0];
+		 value1 = file2.getName().split(".txt")[0];}
 		 
-	 if(input12.equals(value2)){
-		    valid13 = false;
-		    printit("Account with this ID alredy is in the system");
+	 if(input1.matches("[0-9]+") && input1.equals(value1)){
+		    printit("Account with this ID alredy is in the system or you sniki shite tred to enter not numbers");
 		    newAccount();
-	 }
+	 } 
 	 
-	 }
+	 
 	 //TTTTTTTTTTTTTTT PASSWORD INPUT      TTTTTTTTTTTTTTT
 	
 	
-		boolean valid14 = false;
-		boolean valid141 = false;
-		String input14;
-		String input141;
+		boolean valid2 = false;
+		boolean valid3 = false;
+		String input2;
+		String input3;
 		 do {
-			 BufferedReader br14 = new BufferedReader(new InputStreamReader(System.in));
+			
 	      printit("Enter your new password");
-		  input14 = br14.readLine();
+		  input2 = bufferR();
 		 
-		  if((input14.matches("[0-9]+")) && (input14.length() == 4)) {
-		  	  valid141 = true;
+		  if((input2.matches("[0-9]+")) && (input2.length() == 4)) {
+		  	  valid2 = true;
 		} else {
-		 	valid141 = false;
+		 	valid2 = false;
 		 	System.out.println("Please enter just 4 digits");}
-		}while(valid141 == false); 
+		}while(valid2 == false); 
 		  do {
-		BufferedReader br141 = new BufferedReader(new InputStreamReader(System.in));
+		
 		  printit("Enter it again");
-		  input141 = br141.readLine();
+		  input3 = bufferR();
 		  
-			if(input14.equals(input141)) {
-				valid14 = true;
+			if(input2.equals(input3)) {
+				valid3 = true;
 			} else {
-				valid14 = false;
+				valid3 = false;
 				System.out.println("Password isnt the same");
 			}	
-			}while(valid14 == false);
+			}while(valid3 == false);
 			
 		/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 		             ENTER ACC BALANCE
 		 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
 			
 		System.out.println("Enter how much is deposit");	
-	BufferedReader br15 = new BufferedReader(new InputStreamReader(System.in));
-	String input15 = br15.readLine();
+	
+	String input4 = bufferR();
 	 boolean valid15 = false;
-	  if(input15.matches("[0-9]+")) {
+	  if(input4.matches("[0-9]+")) {
 	  	  valid15 = true;
 	} else {
 	 	valid15 = false;
@@ -601,13 +584,14 @@ public void adminOptins() throws Exception {
 	                 CREATING NEW FILE
 	 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
 				
-	 List<String> lines = Arrays.asList(input12,input14,input15);
-	 Path file = Paths.get("user\\"+input12+".txt");
+	 List<String> lines = Arrays.asList(input1,input2,input4);
+	 Path file = Paths.get("user\\"+input1+".txt");
 		Files.write(file, lines, Charset.forName("UTF-8"));
 	 } catch (IOException e) {
 		e.printStackTrace();
 	}
 	 afterOption();
+	 
  }
 
     public void logOut() {
