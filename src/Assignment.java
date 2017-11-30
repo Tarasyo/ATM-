@@ -526,13 +526,13 @@ public void adminOptins() throws Exception {
 	 File[] listOfFiles2 = userList();
 	 
 	 for (File file2 : listOfFiles2) {
-		 value1 = file2.getName().split(".txt")[0];}
+		 value1 = file2.getName().split(".txt")[0];
 		 
-	 if(input1.matches("[0-9]+") && input1.equals(value1)){
+	 if((input1.equals(value1)) || input1.matches(("[A-Za-z]+"))){
 		    printit("Account with this ID alredy is in the system or you sniki shite tred to enter not numbers");
 		    newAccount();
 	 } 
-	 
+	 }
 	 
 	 //TTTTTTTTTTTTTTT PASSWORD INPUT      TTTTTTTTTTTTTTT
 	
